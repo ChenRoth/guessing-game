@@ -1,0 +1,108 @@
+<html>
+<head>
+    <title>Guessing Game</title>
+    <style>
+        .container {
+            margin: 0 auto;
+            max-width: 800px;
+        }
+
+        code {
+            font-weight: 800;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>The Guessing Game API</h1>
+
+        <p>This site has an API for creating and playing the guessing game</p>
+
+        <h4>How do you play the guessing game?</h4>
+        <ul>
+            <li>
+                Create a game
+            </li>
+            <li>
+                Add at least 2 players to the game - each has a name and a guessing number between 1 and 100
+            </li>
+            <li>
+                Start the game and a random number is picked
+            </li>
+        </ul>
+        <h3>
+            The winner is the player who guessed the closest number to the random one!
+        </h3>
+
+        <h4>How do you use the API?</h4>
+        <ul>
+            <li>
+                <code>GET /guessing-game/list</code> - get list of all games by their IDs
+            </li>
+            <li>
+                <code>POST /guessing-game/</code> - create a new game (returns the new game and its id)
+            </li>
+            <li>
+                <code>GET /guessing-game/:id</code> - get a specific game by its id (e.g. /guessing-game/1 to get game
+                with id 1)
+            </li>
+            <li>
+                <code>POST /guessing-game/:id/player</code> - add a player to a specific game. requires a JSON body
+                containing name (string) and guess (number), e.g. {"name":"yossi", "guess": 85}
+            </li>
+            <li>
+                <code>POST /guessing-game/:id/start</code> - start the game by picking a random number; the game object
+                is returned with the winner
+            </li>
+        </ul>
+
+        <h4>What kind of data is there?</h4>
+        <ul>
+            <li>
+                <p>
+                    game is an object of the following form:
+                    <br/>
+                    <code><br/>
+                        {
+                        <br/>
+                        id: number,
+                        <br/>
+                        players: Player[],
+                        <br/>
+                        isOver: boolean,
+                        <br/>
+                        result: number | null
+                        <br/>
+                        winner: Player
+                        <br/>
+                        }
+
+                    </code>
+                </p>
+
+            </li>
+            <li>
+                <p>
+                    Player is an object of the following form:
+                    <br/>
+                    <code><br/>
+                        {
+                        <br/>
+                        name: string,
+                        <br/>
+                        guess: number,
+                        <br/>
+                        }
+                    </code>
+                </p>
+            </li>
+        </ul>
+
+
+    </header>
+</div>
+
+</body>
+</html>
